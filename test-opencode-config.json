@@ -1,0 +1,70 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "autoupdate": false,
+
+  "share": "disabled",
+
+  "plugin": [],
+
+  "mcp": {},
+
+  "enabled_providers": ["internal"],
+
+  "disabled_providers": [
+    "zen",
+    "opencode",
+    "openai",
+    "anthropic",
+    "google",
+    "gemini",
+    "openrouter",
+    "github-copilot",
+    "llmgateway"
+  ],
+
+  "permission": {
+    "*": "ask",
+
+    "edit": "allow",
+
+    "bash": "ask",
+
+    "webfetch": "deny",
+
+    "websearch": "deny"
+  },
+
+  "watcher": {
+    "ignore": [
+      ".git/**",
+      "node_modules/**",
+      "dist/**",
+      "build/**",
+      ".next/**",
+      ".turbo/**",
+      ".cache/**"
+    ]
+  },
+
+  "provider": {
+    "internal": {
+      "npm": "@ai-sdk/openai-compatible",
+
+      "name": "Internal Gateway",
+
+      "options": {
+        "baseURL": "{env:AI_BASE_URL}",
+        "apiKey": "{env:AI_API_KEY}"
+      },
+
+      "models": {
+        "{env:AI_MODEL}": {}
+      }
+    }
+  },
+
+  "model": "internal/{env:AI_MODEL}",
+
+  "small_model": "internal/{env:AI_MODEL}"
+}
